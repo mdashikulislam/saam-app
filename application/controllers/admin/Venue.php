@@ -8,6 +8,6 @@ class Venue extends MY_Controller{
 
 	public function index()
 	{
-
+		die('as');
 	}
 }
