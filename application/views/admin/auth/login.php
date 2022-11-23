@@ -36,13 +36,12 @@
         <p class="mb-1">
           <a href="<?= base_url('admin/auth/forgot_password'); ?>"><?= trans('i_forgot_my_password') ?></a>
         </p>
-        <p class="mb-0">
-          <a href="<?= base_url('admin/auth/register'); ?>" class="text-center"><?= trans('register_new_membership') ?></a>
-        </p>
+<!--        <p class="mb-0">-->
+<!--          <a href="--><?//= base_url('admin/auth/register'); ?><!--" class="text-center">--><?//= trans('register_new_membership') ?><!--</a>-->
+<!--        </p>-->
       </div>
       <!-- /.login-card-body -->
     </div>
   </div>
   <!-- /.login-box -->
 </div>
-          

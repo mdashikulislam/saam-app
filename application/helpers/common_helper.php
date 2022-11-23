@@ -124,3 +124,11 @@ function trans($string) //DH modif
     	return $tmp;
     return '!'. $string . '!';
 }
+if (!function_exists('pp')){
+	function pp($data){
+		echo '<pre style="padding:10px;">';
+		print_r($data);
+		echo '</pre>';
+		exit();
+	}
+}
