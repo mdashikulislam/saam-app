@@ -7,6 +7,10 @@ class Venue_model extends CI_Model{
 	}
 	public function get_all_venues(){
 		$this->db->select('*');
+		if(!$this->session->userdata('is_supper')){
+			$this->db->join('ci_users','ci_users.venue_id = ci_venues.id','INNER');
+			$this->db->where('ci_users.user_id',($this->session->userdata('user_id')));
+		}
 		return $this->db->get($this->table)->result_array();
 	}
 	// Get user detial by ID
