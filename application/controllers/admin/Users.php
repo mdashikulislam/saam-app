@@ -40,8 +40,7 @@ class Users extends MY_Controller {
 				id="cb_'.$row['user_id'].'"
 				type="checkbox"  
 				'.$status.'><label for="cb_'.$row['user_id'].'"></label>',
-
-				'<a title="View" class="view btn btn-xs btn-info" href="'.base_url('admin/users/edit/'.$row['user_id']).'"> <i class="fa fa-eye"></i></a>
+				'<a title="View" class="view btn btn-xs btn-info" href="'.base_url('admin/users/view/'.$row['user_id']).'"> <i class="fa fa-eye"></i></a>
 				<a title="Edit" class="update btn btn-xs btn-warning" href="'.base_url('admin/users/edit/'.$row['user_id']).'"> <i class="fa fa-pencil-square-o"></i></a>
 				<a title="Delete" class="delete btn btn-xs btn-danger" href='.base_url("admin/users/delete/".$row['user_id']).' title="Delete" onclick="return confirm(\'Do you want to delete ?\')"> <i class="fa fa-trash-o"></i></a>'
 			);
@@ -117,7 +116,13 @@ class Users extends MY_Controller {
 		}
 		
 	}
-
+	public function view($id = 0){
+		$data['admin_roles'] = $this->admin->get_admin_roles();
+		$this->rbac->check_operation_access();
+		$this->load->view('admin/includes/_header');
+		$this->load->view('admin/users/user_edit', $data);
+		$this->load->view('admin/includes/_footer');
+	}
 	public function edit($id = 0){
 
 		$data['admin_roles'] = $this->admin->get_admin_roles();
