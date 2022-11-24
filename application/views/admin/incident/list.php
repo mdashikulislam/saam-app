@@ -67,7 +67,7 @@
 		"order": [[4,'desc']],
 		"columnDefs": [
 			{ "targets": 0, "name": "id", 'searchable':true, 'orderable':true},
-			{ "targets": 1, "name": "venue", 'searchable':false, 'orderable':false},
+			{ "targets": 1, "name": "venue", 'searchable':true, 'orderable':true},
 			{ "targets": 2, "name": "person", 'searchable':true, 'orderable':true},
 			{ "targets": 3, "name": "gender", 'searchable':true, 'orderable':true},
 			{ "targets": 4, "name": "comments", 'searchable':true, 'orderable':true},
