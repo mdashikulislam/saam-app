@@ -1,7 +1,22 @@
 <?php
 class Venue_model extends CI_Model{
+	private $table = 'ci_venues';
 	public function add_venue($data){
-		$this->db->insert('ci_venues', $data);
+		$this->db->insert($this->table, $data);
+		return true;
+	}
+	public function get_all_venues(){
+		$this->db->select('*');
+		return $this->db->get($this->table)->result_array();
+	}
+	// Get user detial by ID
+	public function get_venue_by_id($id){
+		$query = $this->db->get_where($this->table, array('id' => $id));
+		return $result = $query->row_array();
+	}
+	public function edit_venue($data, $id){
+		$this->db->where('id', $id);
+		$this->db->update($this->table, $data);
 		return true;
 	}
 }
