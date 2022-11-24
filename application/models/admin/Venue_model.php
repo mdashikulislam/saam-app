@@ -13,6 +13,7 @@ class Venue_model extends CI_Model{
 		}
 		return $this->db->get($this->table)->result_array();
 	}
+
 	// Get user detial by ID
 	public function get_venue_by_id($id){
 		$query = $this->db->get_where($this->table, array('id' => $id));
