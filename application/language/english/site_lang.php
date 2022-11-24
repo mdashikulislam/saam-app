@@ -274,3 +274,6 @@ $lang['terms_and_conditions'] = "Terms & Conditions";
 $lang['edit_invoice'] = "Edit Invoice";
 $lang['download'] = "Download";
 $lang['send_email'] = "Send Email";
+$lang['venue'] = "Venue";
+$lang['venue_list'] = "Venue List";
+$lang['add_new_venue'] = "Add new venue";

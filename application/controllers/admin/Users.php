@@ -20,13 +20,13 @@ class Users extends MY_Controller {
 		$this->load->view('admin/includes/_footer');
 	}
 	
-	public function datatable_json(){				   					   
+	public function datatable_json(){
 		$records['data'] = $this->user_model->get_all_users();
 		$data = array();
 
 		$i=0;
-		foreach ($records['data']   as $row) 
-		{  
+		foreach ($records['data']   as $row)
+		{
 			$status = ($row['is_active'] == 1)? 'checked': '';
 			$data[]= array(
 				++$i,
@@ -34,12 +34,12 @@ class Users extends MY_Controller {
 				$row['email'],
 				$row['mobile_no'],
 				'<span class=\'btn btn-link\'>'.get_admin_name($row['added_by']).'</span>',
-				date_time($row['created_at']),	
+				date_time($row['created_at']),
 				'<input class="tgl_checkbox tgl-ios" 
 				data-id="'.$row['user_id'].'" 
 				id="cb_'.$row['user_id'].'"
 				type="checkbox"  
-				'.$status.'><label for="cb_'.$row['user_id'].'"></label>',		
+				'.$status.'><label for="cb_'.$row['user_id'].'"></label>',
 
 				'<a title="View" class="view btn btn-xs btn-info" href="'.base_url('admin/users/edit/'.$row['user_id']).'"> <i class="fa fa-eye"></i></a>
 				<a title="Edit" class="update btn btn-xs btn-warning" href="'.base_url('admin/users/edit/'.$row['user_id']).'"> <i class="fa fa-pencil-square-o"></i></a>
@@ -47,7 +47,7 @@ class Users extends MY_Controller {
 			);
 		}
 		$records['data']=$data;
-		echo json_encode($records);						   
+		echo json_encode($records);
 	}
 
 	//-----------------------------------------------------------
@@ -71,6 +71,7 @@ class Users extends MY_Controller {
 			$this->form_validation->set_rules('mobile_no', 'Number', 'trim|required');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required');
 			$this->form_validation->set_rules('role', 'Role', 'trim|required');
+			$this->form_validation->set_rules('venue_id', 'Venue', 'trim|required');
 
 
 			if ($this->form_validation->run() == FALSE) {
@@ -91,6 +92,7 @@ class Users extends MY_Controller {
 					'email' => $this->input->post('email'),
 					'mobile_no' => $this->input->post('mobile_no'),
 					'address' => $this->input->post('address'),
+					'venue_id' => $this->input->post('venue_id'),
 					'password' =>  password_hash($this->input->post('password'), PASSWORD_BCRYPT),
 					'is_active' => 1,
 					'created_at' => date('Y-m-d : h:m:s'),
@@ -144,6 +146,7 @@ class Users extends MY_Controller {
 					'lastname' => $this->input->post('lastname'),
 					'email' => $this->input->post('email'),
 					'mobile_no' => $this->input->post('mobile_no'),
+					'venue_id' => $this->input->post('venue_id'),
 					'password' =>  password_hash($this->input->post('password'), PASSWORD_BCRYPT),
 					'is_active' => $this->input->post('status'),
 					'updated_at' => date('Y-m-d : h:m:s'),

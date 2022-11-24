@@ -133,3 +133,18 @@ if (!function_exists('pp')){
 		exit();
 	}
 }
+
+if (!function_exists('getVenueDropdown')){
+	function getVenueDropdown($venue_id = 0)
+	{
+		$ci = &get_instance();
+		$query = $ci->db->get_where('ci_venues');
+		$options = '<option value="">Select Venue</option>';
+		foreach ($query->result() as $row) {
+			$options .= '<option value="' . $row->id . '" ';
+			$options .= ($row->id == $venue_id) ? 'selected="selected"' : '';
+			$options .= '>' . $row->name . '</option>';
+		}
+		return $options;
+	}
+}
