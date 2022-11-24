@@ -49,11 +49,18 @@
               </div>
               <div class="form-group">
                 <label for="mobile_no" class="col-sm-2 control-label"><?= trans('mobile_no') ?></label>
-
                 <div class="col-md-12">
                   <input type="number" name="mobile_no" value="<?= $admin['mobile_no']; ?>" class="form-control" id="mobile_no" placeholder="">
                 </div>
               </div>
+				<div class="form-group">
+					<label for="address" class="col-md-2 control-label">Select Venue</label>
+					<div  class="col-md-12">
+						<select disabled name="venue_id" id="venue_id" class="form-control">
+							<?= getVenueDropdown($admin['venue_id']) ?>
+						</select>
+					</div>
+				</div>
               <div class="form-group">
                 <div class="col-md-12">
                   <input type="submit" name="submit" value="<?= trans('update_profile') ?>" class="btn btn-info pull-right">

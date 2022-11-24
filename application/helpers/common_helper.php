@@ -124,6 +124,7 @@ function trans($string) //DH modif
     	return $tmp;
     return '!'. $string . '!';
 }
+
 if (!function_exists('pp')){
 	function pp($data){
 		echo '<pre style="padding:10px;">';
@@ -131,4 +132,68 @@ if (!function_exists('pp')){
 		echo '</pre>';
 		exit();
 	}
+}
+
+if (!function_exists('getVenueDropdown')){
+	function getVenueDropdown($venue_id = 0)
+	{
+		$ci = &get_instance();
+		$query = $ci->db->get_where('ci_venues');
+		$options = '<option value="">Select Venue</option>';
+		foreach ($query->result() as $row) {
+			$options .= '<option value="' . $row->id . '" ';
+			$options .= ($row->id == $venue_id) ? 'selected="selected"' : '';
+			$options .= '>' . $row->name . '</option>';
+		}
+		return $options;
+	}
+}
+if (!function_exists('getPersonDropdown')){
+	function getPersonDropdown($selected = '')
+	{
+		$query = [
+			0=>'Staff',
+			1=>'Customer'
+		];
+		$options = '<option value="">Select Person</option>';
+		foreach ($query as $key => $row) {
+			$options .= '<option value="' . $key . '" ';
+			$options .= ($key == $selected && $selected !='') ? ' selected="selected" ' : '';
+			$options .= '>' . $row . '</option>';
+		}
+		return $options;
+	}
+}
+
+if (!function_exists('getGenderDropdown')){
+	function getGenderDropdown($selected = '')
+	{
+		$query = [
+			0=>'Female',
+			1=>'Male',
+			2=>'Other'
+		];
+		$options = '<option value="">Select Gender</option>';
+		foreach ($query as $key => $row) {
+			$options .= '<option value="' . $key . '" ';
+			$options .= ($key == $selected && $selected !='') ? ' selected="selected" ' : '';
+			$options .= '>' . $row . '</option>';
+		}
+		return $options;
+	}
+}
+function getGender($key){
+	$query = [
+		0=>'Female',
+		1=>'Male',
+		2=>'Other'
+	];
+	return $query[$key];
+}
+function getPerson($key){
+	$query = [
+		0=>'Staff',
+		1=>'Customer'
+	];
+	return $query[$key];
 }

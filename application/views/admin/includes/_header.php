@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?= isset($title)? $title.' - ' : 'Title -' ?> <?= $this->general_settings['application_name']; ?></title>
@@ -31,7 +32,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- jQuery -->
   <script src="<?= base_url()?>assets/plugins/jquery/jquery.min.js"></script>
-
+	<link rel="icon" type="image/x-icon" href="<?= base_url($this->general_settings['favicon']); ?>">
 </head>
 
 <body class="hold-transition sidebar-mini <?=  (isset($bg_cover)) ? 'bg-cover' : '' ?>">

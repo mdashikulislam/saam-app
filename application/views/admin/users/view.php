@@ -6,13 +6,7 @@
 			<div class="card-header">
 				<div class="d-inline-block">
 					<h3 class="card-title"><i class="fa fa-pencil"></i>
-						&nbsp; <?= trans('edit_user') ?> </h3>
-				</div>
-				<div class="d-inline-block float-right">
-					<a href="<?= base_url('admin/users'); ?>" class="btn btn-success"><i
-								class="fa fa-list"></i> <?= trans('users_list') ?></a>
-					<a href="<?= base_url('admin/users/add'); ?>" class="btn btn-success"><i
-								class="fa fa-plus"></i> <?= trans('add_new_user') ?></a>
+						&nbsp; View User </h3>
 				</div>
 			</div>
 			<div class="card-body">
@@ -20,12 +14,11 @@
 				<!-- For Messages -->
 				<?php $this->load->view('admin/includes/_messages.php') ?>
 
-				<?php echo form_open(base_url('admin/users/edit/'. $user['user_id']), 'class="form-horizontal"') ?>
 				<div class="form-group">
 					<label for="username" class="col-md-2 control-label"><?= trans('username') ?></label>
 
 					<div class="col-md-12">
-						<input type="text" name="username" value="<?= $user['username']; ?>" class="form-control"
+						<input disabled type="text" name="username" value="<?= $user['username']; ?>" class="form-control"
 							   id="username" placeholder="">
 					</div>
 				</div>
@@ -33,7 +26,7 @@
 					<label for="firstname" class="col-md-2 control-label"><?= trans('firstname') ?></label>
 
 					<div class="col-md-12">
-						<input type="text" name="firstname" value="<?= $user['firstname']; ?>" class="form-control"
+						<input disabled type="text" name="firstname" value="<?= $user['firstname']; ?>" class="form-control"
 							   id="firstname" placeholder="">
 					</div>
 				</div>
@@ -42,7 +35,7 @@
 					<label for="lastname" class="col-md-2 control-label"><?= trans('lastname') ?></label>
 
 					<div class="col-md-12">
-						<input type="text" name="lastname" value="<?= $user['lastname']; ?>" class="form-control"
+						<input disabled type="text" name="lastname" value="<?= $user['lastname']; ?>" class="form-control"
 							   id="lastname" placeholder="">
 					</div>
 				</div>
@@ -51,14 +44,14 @@
 					<label for="email" class="col-md-2 control-label"><?= trans('email') ?></label>
 
 					<div class="col-md-12">
-						<input type="email" name="email" value="<?= $user['email']; ?>" class="form-control" id="email"
+						<input disabled type="email" name="email" value="<?= $user['email']; ?>" class="form-control" id="email"
 							   placeholder="">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="role" class="col-md-2 control-label"><?= trans('select_user_role') ?>*</label>
 					<div class="col-md-12">
-						<select name="role" class="form-control">
+						<select disabled name="role" class="form-control">
 							<option value=""><?= trans('select_role') ?></option>
 							<?php foreach ($admin_roles as $role): ?>
 								<?php if ($role['admin_role_id'] == $user['admin_role_id']): ?>
@@ -75,7 +68,7 @@
 					<label for="mobile_no" class="col-md-2 control-label"><?= trans('mobile_no') ?></label>
 
 					<div class="col-md-12">
-						<input type="number" name="mobile_no" value="<?= $user['mobile_no']; ?>" class="form-control"
+						<input disabled type="number" name="mobile_no" value="<?= $user['mobile_no']; ?>" class="form-control"
 							   id="mobile_no" placeholder="">
 					</div>
 				</div>
@@ -83,7 +76,7 @@
 					<label for="role" class="col-md-2 control-label"><?= trans('status') ?></label>
 
 					<div class="col-md-12">
-						<select name="status" class="form-control">
+						<select disabled name="status" class="form-control">
 							<option value=""><?= trans('select_status') ?></option>
 							<option value="1" <?= ($user['is_active'] == 1) ? 'selected' : '' ?> >Active</option>
 							<option value="0" <?= ($user['is_active'] == 0) ? 'selected' : '' ?>>Deactive</option>
@@ -93,18 +86,11 @@
 				<div class="form-group">
 					<label for="venue_id" class="col-md-2 control-label">Select Venue</label>
 					<div class="col-md-12">
-						<select name="venue_id" id="venue_id" class="form-control">
+						<select disabled name="venue_id" id="venue_id" class="form-control">
 							<?= getVenueDropdown($user['venue_id']) ?>
 						</select>
 					</div>
 				</div>
-				<div class="form-group">
-					<div class="col-md-12">
-						<input type="submit" name="submit" value="<?= trans('update_user') ?>"
-							   class="btn btn-primary pull-right">
-					</div>
-				</div>
-				<?php echo form_close(); ?>
 			</div>
 			<!-- /.box-body -->
 		</div>

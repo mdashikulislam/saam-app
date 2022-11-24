@@ -10,14 +10,15 @@
 		// get all users for server-side datatable processing (ajax based)
 		public function get_all_users(){
 
-			$this->db->select('*');
+			$this->db->select('ci_users.*,ci_venues.name');
+			$this->db->join('ci_venues','ci_venues.id = ci_users.venue_id','LEFT');
 			if($this->session->userdata('is_supper')){
-				$this->db->where('is_user',1);
+				$this->db->where('ci_users.is_user',1);
 				return $this->db->get('ci_users')->result_array();
 			}
 			else{
-				$this->db->where('is_user', 1);
-				$this->db->where('added_by',($this->session->userdata('user_id')));
+				$this->db->where('ci_users.is_user', 1);
+				$this->db->where('ci_users.added_by',($this->session->userdata('user_id')));
 				return $this->db->get('ci_users')->result_array();
 			}
 		}

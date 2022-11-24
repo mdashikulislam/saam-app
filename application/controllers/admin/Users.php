@@ -6,7 +6,6 @@ class Users extends MY_Controller {
 		parent::__construct();
 		auth_check(); // check login auth
 		$this->rbac->check_module_access();
-
 		$this->load->model('admin/admin_model', 'admin');
 		$this->load->model('admin/user_model', 'user_model');
 		$this->load->model('admin/activity_model', 'activity_model');
@@ -20,34 +19,34 @@ class Users extends MY_Controller {
 		$this->load->view('admin/includes/_footer');
 	}
 	
-	public function datatable_json(){				   					   
+	public function datatable_json(){
 		$records['data'] = $this->user_model->get_all_users();
 		$data = array();
 
 		$i=0;
-		foreach ($records['data']   as $row) 
-		{  
+		foreach ($records['data']   as $row)
+		{
 			$status = ($row['is_active'] == 1)? 'checked': '';
 			$data[]= array(
 				++$i,
 				$row['username'],
 				$row['email'],
 				$row['mobile_no'],
+				@$row['name'],
 				'<span class=\'btn btn-link\'>'.get_admin_name($row['added_by']).'</span>',
-				date_time($row['created_at']),	
+				date_time($row['created_at']),
 				'<input class="tgl_checkbox tgl-ios" 
 				data-id="'.$row['user_id'].'" 
 				id="cb_'.$row['user_id'].'"
 				type="checkbox"  
-				'.$status.'><label for="cb_'.$row['user_id'].'"></label>',		
-
-				'<a title="View" class="view btn btn-xs btn-info" href="'.base_url('admin/users/edit/'.$row['user_id']).'"> <i class="fa fa-eye"></i></a>
+				'.$status.'><label for="cb_'.$row['user_id'].'"></label>',
+				'<a title="View" class="view btn btn-xs btn-info" href="'.base_url('admin/users/view/'.$row['user_id']).'"> <i class="fa fa-eye"></i></a>
 				<a title="Edit" class="update btn btn-xs btn-warning" href="'.base_url('admin/users/edit/'.$row['user_id']).'"> <i class="fa fa-pencil-square-o"></i></a>
 				<a title="Delete" class="delete btn btn-xs btn-danger" href='.base_url("admin/users/delete/".$row['user_id']).' title="Delete" onclick="return confirm(\'Do you want to delete ?\')"> <i class="fa fa-trash-o"></i></a>'
 			);
 		}
 		$records['data']=$data;
-		echo json_encode($records);						   
+		echo json_encode($records);
 	}
 
 	//-----------------------------------------------------------
@@ -71,6 +70,7 @@ class Users extends MY_Controller {
 			$this->form_validation->set_rules('mobile_no', 'Number', 'trim|required');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required');
 			$this->form_validation->set_rules('role', 'Role', 'trim|required');
+			$this->form_validation->set_rules('venue_id', 'Venue', 'trim|required');
 
 
 			if ($this->form_validation->run() == FALSE) {
@@ -91,6 +91,7 @@ class Users extends MY_Controller {
 					'email' => $this->input->post('email'),
 					'mobile_no' => $this->input->post('mobile_no'),
 					'address' => $this->input->post('address'),
+					'venue_id' => $this->input->post('venue_id'),
 					'password' =>  password_hash($this->input->post('password'), PASSWORD_BCRYPT),
 					'is_active' => 1,
 					'created_at' => date('Y-m-d : h:m:s'),
@@ -115,7 +116,14 @@ class Users extends MY_Controller {
 		}
 		
 	}
-
+	public function view($id = 0){
+		$data['admin_roles'] = $this->admin->get_admin_roles();
+		$this->rbac->check_operation_access();
+		$data['user'] = $this->user_model->get_user_by_id($id);
+		$this->load->view('admin/includes/_header');
+		$this->load->view('admin/users/view', $data);
+		$this->load->view('admin/includes/_footer');
+	}
 	public function edit($id = 0){
 
 		$data['admin_roles'] = $this->admin->get_admin_roles();
@@ -134,7 +142,7 @@ class Users extends MY_Controller {
 						'errors' => validation_errors()
 					);
 					$this->session->set_flashdata('errors', $data['errors']);
-					redirect(base_url('admin/users/user_edit/'.$id),'refresh');
+					redirect(base_url('admin/users/edit/'.$id),'refresh');
 			}
 			else{
 				$data = array(
@@ -144,6 +152,7 @@ class Users extends MY_Controller {
 					'lastname' => $this->input->post('lastname'),
 					'email' => $this->input->post('email'),
 					'mobile_no' => $this->input->post('mobile_no'),
+					'venue_id' => $this->input->post('venue_id'),
 					'password' =>  password_hash($this->input->post('password'), PASSWORD_BCRYPT),
 					'is_active' => $this->input->post('status'),
 					'updated_at' => date('Y-m-d : h:m:s'),

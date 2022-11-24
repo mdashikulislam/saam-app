@@ -24,11 +24,11 @@
 		<div class="card">
 			<div class="card-header">
 				<div class="d-inline-block">
-					<h3 class="card-title"><i class="fa fa-list"></i>&nbsp; <?= trans('venue_list') ?></h3>
+					<h3 class="card-title"><i class="fa fa-list"></i>&nbsp; <?= trans('incident_list') ?></h3>
 				</div>
 				<div class="d-inline-block float-right">
 					<?php if($this->rbac->check_operation_permission('add')): ?>
-						<a href="<?= base_url('admin/venue/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> <?= trans('add_new_venue') ?></a>
+						<a href="<?= base_url('admin/incident/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> <?= trans('add_new_incident') ?></a>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -39,13 +39,11 @@
 					<thead>
 					<tr>
 						<th>#<?= trans('id') ?></th>
-						<th>Logo</th>
-						<th>Name</th>
-						<th>Address</th>
-						<th>Contact</th>
-						<th>Number</th>
-						<th>QR Stuff</th>
-						<th>QR Customer</th>
+						<th>Venue</th>
+						<th>Person</th>
+						<th>Gender</th>
+						<th>Comments</th>
+						<th>Added By</th>
 						<th width="100" class="text-right"><?= trans('action') ?></th>
 					</tr>
 					</thead>
@@ -65,18 +63,16 @@
 	var table = $('#na_datatable').DataTable( {
 		"processing": true,
 		"serverSide": false,
-		"ajax": "<?=base_url('admin/venue/datatable_json')?>",
+		"ajax": "<?=base_url('admin/incident/datatable_json')?>",
 		"order": [[4,'desc']],
 		"columnDefs": [
 			{ "targets": 0, "name": "id", 'searchable':true, 'orderable':true},
-			{ "targets": 1, "name": "logo", 'searchable':false, 'orderable':false},
-			{ "targets": 2, "name": "name", 'searchable':true, 'orderable':true},
-			{ "targets": 3, "name": "address", 'searchable':true, 'orderable':true},
-			{ "targets": 4, "name": "contact", 'searchable':true, 'orderable':true},
-			{ "targets": 5, "name": "number", 'searchable':false, 'orderable':false},
-			{ "targets": 6, "name": "qr_stuff", 'searchable':true, 'orderable':true},
-			{ "targets": 7, "name": "qr_customer", 'searchable':true, 'orderable':true},
-			{ "targets": 8, "name": "Action", 'searchable':false, 'orderable':false,'width':'100px'}
+			{ "targets": 1, "name": "venue", 'searchable':true, 'orderable':true},
+			{ "targets": 2, "name": "person", 'searchable':true, 'orderable':true},
+			{ "targets": 3, "name": "gender", 'searchable':true, 'orderable':true},
+			{ "targets": 4, "name": "comments", 'searchable':true, 'orderable':true},
+			{ "targets": 5, "name": "added_by", 'searchable':false, 'orderable':false},
+			{ "targets": 6, "name": "Action", 'searchable':false, 'orderable':false,'width':'100px'}
 		]
 	});
 </script>

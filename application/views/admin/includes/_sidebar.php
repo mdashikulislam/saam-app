@@ -76,26 +76,6 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
         <?php endif; ?>
 
         <?php endforeach; ?>
-
-        <li class="nav-header"><?= trans('labels') ?></li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-circle-o text-danger"></i>
-            <p class="text"><?= trans('important') ?></p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-circle-o text-warning"></i>
-            <p><?= trans('warning') ?></p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-circle-o text-info"></i>
-            <p><?= trans('informational') ?></p>
-          </a>
-        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
