@@ -136,7 +136,7 @@ class Users extends MY_Controller {
 						'errors' => validation_errors()
 					);
 					$this->session->set_flashdata('errors', $data['errors']);
-					redirect(base_url('admin/users/user_edit/'.$id),'refresh');
+					redirect(base_url('admin/users/edit/'.$id),'refresh');
 			}
 			else{
 				$data = array(

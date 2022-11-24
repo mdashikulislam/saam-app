@@ -20,7 +20,7 @@
 				<!-- For Messages -->
 				<?php $this->load->view('admin/includes/_messages.php') ?>
 
-				<?php echo form_open(base_url('admin/users/edit/' . $user['user_id']), 'class="form-horizontal"') ?>
+				<?php echo form_open(base_url('admin/users/edit/'. $user['user_id']), 'class="form-horizontal"') ?>
 				<div class="form-group">
 					<label for="username" class="col-md-2 control-label"><?= trans('username') ?></label>
 
