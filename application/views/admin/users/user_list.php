@@ -42,6 +42,7 @@ button
               <th><?= trans('username') ?></th>
               <th><?= trans('email') ?></th>
               <th><?= trans('mobile_no') ?></th>
+              <th><?= trans('venue') ?></th>
               <th><?= trans('created_by') ?></th>
               <th><?= trans('created_date') ?></th>
               <th><?= trans('status') ?></th>
