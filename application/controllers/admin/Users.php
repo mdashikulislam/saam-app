@@ -119,8 +119,9 @@ class Users extends MY_Controller {
 	public function view($id = 0){
 		$data['admin_roles'] = $this->admin->get_admin_roles();
 		$this->rbac->check_operation_access();
+		$data['user'] = $this->user_model->get_user_by_id($id);
 		$this->load->view('admin/includes/_header');
-		$this->load->view('admin/users/user_edit', $data);
+		$this->load->view('admin/users/view', $data);
 		$this->load->view('admin/includes/_footer');
 	}
 	public function edit($id = 0){

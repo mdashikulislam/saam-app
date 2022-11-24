@@ -85,7 +85,7 @@ class Incident extends MY_Controller{
 		$this->rbac->check_operation_access();
 		$data['incident'] = $this->Incident_model->get_by_id($id);
 		$this->load->view('admin/includes/_header');
-		$this->load->view('admin/incident/edit', $data);
+		$this->load->view('admin/incident/view', $data);
 		$this->load->view('admin/includes/_footer');
 	}
 	public function edit($id = 0){

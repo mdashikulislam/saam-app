@@ -98,7 +98,7 @@ class Venue extends MY_Controller{
 		$this->rbac->check_operation_access();
 		$data['venue'] = $this->Venue_model->get_venue_by_id($id);
 		$this->load->view('admin/includes/_header');
-		$this->load->view('admin/venue/edit', $data);
+		$this->load->view('admin/venue/view', $data);
 		$this->load->view('admin/includes/_footer');
 	}
 	public function edit($id = 0){
