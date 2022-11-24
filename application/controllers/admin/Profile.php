@@ -19,7 +19,6 @@ class Profile extends MY_Controller {
 				'lastname' => $this->input->post('lastname'),
 				'email' => $this->input->post('email'),
 				'mobile_no' => $this->input->post('mobile_no'),
-				'venue_id' => $this->input->post('venue_id'),
 				'updated_at' => date('Y-m-d : h:m:s'),
 			);
 			$data = $this->security->xss_clean($data);

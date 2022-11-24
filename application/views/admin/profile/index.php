@@ -55,8 +55,8 @@
               </div>
 				<div class="form-group">
 					<label for="address" class="col-md-2 control-label">Select Venue</label>
-					<div class="col-md-12">
-						<select name="venue_id" id="venue_id" class="form-control">
+					<div  class="col-md-12">
+						<select disabled name="venue_id" id="venue_id" class="form-control">
 							<?= getVenueDropdown($admin['venue_id']) ?>
 						</select>
 					</div>
