@@ -148,3 +148,52 @@ if (!function_exists('getVenueDropdown')){
 		return $options;
 	}
 }
+if (!function_exists('getPersonDropdown')){
+	function getPersonDropdown($selected = '')
+	{
+		$query = [
+			0=>'Staff',
+			1=>'Customer'
+		];
+		$options = '<option value="">Select Person</option>';
+		foreach ($query as $key => $row) {
+			$options .= '<option value="' . $key . '" ';
+			$options .= ($key == $selected && $selected !='') ? ' selected="selected" ' : '';
+			$options .= '>' . $row . '</option>';
+		}
+		return $options;
+	}
+}
+
+if (!function_exists('getGenderDropdown')){
+	function getGenderDropdown($selected = '')
+	{
+		$query = [
+			0=>'Female',
+			1=>'Male',
+			2=>'Other'
+		];
+		$options = '<option value="">Select Gender</option>';
+		foreach ($query as $key => $row) {
+			$options .= '<option value="' . $key . '" ';
+			$options .= ($key == $selected && $selected !='') ? ' selected="selected" ' : '';
+			$options .= '>' . $row . '</option>';
+		}
+		return $options;
+	}
+}
+function getGender($key){
+	$query = [
+		0=>'Female',
+		1=>'Male',
+		2=>'Other'
+	];
+	return $query[$key];
+}
+function getPerson($key){
+	$query = [
+		0=>'Staff',
+		1=>'Customer'
+	];
+	return $query[$key];
+}

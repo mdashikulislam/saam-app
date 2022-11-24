@@ -19,33 +19,26 @@
 				<?php echo form_open_multipart(base_url('admin/incident/add'), 'class="form-horizontal"');  ?>
 				<div class="row">
 					<div class="form-group col-lg-6">
-						<label for="name" class=" control-label">Name</label>
-						<input type="text" name="name" class="form-control" id="name" placeholder="">
+						<label for="venue" class=" control-label">Venue</label>
+						<select name="venue" id="venue" class="form-control">
+							<?= getVenueDropdown() ?>
+						</select>
 					</div>
 					<div class="form-group col-lg-6">
-						<label for="address" class=" control-label">Address</label>
-						<input type="text" name="address" class="form-control" id="address" placeholder="">
+						<label for="person" class=" control-label">Person</label>
+						<select name="person" id="person" class="form-control">
+							<?= getPersonDropdown() ?>
+						</select>
 					</div>
 					<div class="form-group col-lg-6">
-						<label for="contact" class=" control-label">Contact</label>
-						<input type="text" name="contact" class="form-control" id="contact" placeholder="">
+						<label for="gender" class=" control-label">Gender</label>
+						<select name="gender" id="gender" class="form-control">
+							<?= getGenderDropdown() ?>
+						</select>
 					</div>
 					<div class="form-group col-lg-6">
-						<label for="number" class=" control-label">Number</label>
-						<input type="number" step="any" name="number" class="form-control" id="number" placeholder="">
-					</div>
-					<div class="form-group col-lg-6">
-						<label for="qr_stuff" class=" control-label">QR Stuff</label>
-						<input type="text" name="qr_stuff" class="form-control" id="qr_stuff" placeholder="">
-					</div>
-					<div class="form-group col-lg-6">
-						<label for="qr_customer" class=" control-label">QR Customer</label>
-						<input type="text" name="qr_customer" class="form-control" id="qr_customer" placeholder="">
-					</div>
-					<div class="form-group col-lg-6">
-						<label for="logo" class=" control-label">Logo</label>
-						<input type="file" name="logo" class="form-control" id="logo" placeholder="" accept=".png, .jpg, .jpeg, .gif, .svg">
-						<p><small class="text-success"><?= trans('allowed_types') ?>: gif, jpg, png, jpeg</small></p>
+						<label for="comments" class=" control-label">Comments</label>
+						<input type="text" name="comments" class="form-control" id="comments" placeholder="">
 					</div>
 				</div>
 				<div class="form-group">

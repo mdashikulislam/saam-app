@@ -277,3 +277,6 @@ $lang['send_email'] = "Send Email";
 $lang['venue'] = "Venue";
 $lang['venue_list'] = "Venue List";
 $lang['add_new_venue'] = "Add new venue";
+$lang['add_new_incident'] = "Add new incident";
+$lang['incident'] = "Incident";
+$lang['incident_list'] = "Incident List";
