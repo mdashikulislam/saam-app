@@ -96,7 +96,6 @@ class Incident extends MY_Controller{
 			}
 			else{
 				$data = array(
-					'added_by' => $this->session->userdata('user_id'),
 					'venue' => $this->input->post('venue'),
 					'person' => $this->input->post('person'),
 					'gender' => $this->input->post('gender'),
@@ -112,7 +111,7 @@ class Incident extends MY_Controller{
 			}
 		}
 		else{
-			$data['venue'] = $this->Incident_model->get_by_id($id);
+			$data['incident'] = $this->Incident_model->get_by_id($id);
 			$this->load->view('admin/includes/_header');
 			$this->load->view('admin/incident/edit', $data);
 			$this->load->view('admin/includes/_footer');
@@ -122,9 +121,10 @@ class Incident extends MY_Controller{
 	{
 		$this->rbac->check_operation_access(); // check opration permission
 
-		$this->db->delete('ci_venues', array('id' => $id));
+		$this->db->delete('ci_incidents', array('id' => $id));
 
-		$this->session->set_flashdata('success', 'Venue has been deleted successfully!');
-		redirect(base_url('admin/venue'));
+		$this->session->set_flashdata('success', 'Incident has been deleted successfully!');
+		redirect(base_url('admin/incident'));
 	}
+
 }

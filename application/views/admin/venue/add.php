@@ -16,7 +16,7 @@
 
 				<!-- For Messages -->
 				<?php $this->load->view('admin/includes/_messages.php') ?>
-				<?php echo form_open_multipart(base_url('admin/venue/add'), 'class="form-horizontal"');  ?>
+				<?php echo form_open(base_url('admin/venue/add'), 'class="form-horizontal"');  ?>
 				<div class="row">
 					<div class="form-group col-lg-6">
 						<label for="name" class=" control-label">Name</label>

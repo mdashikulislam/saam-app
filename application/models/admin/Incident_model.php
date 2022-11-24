@@ -27,4 +27,5 @@ class Incident_model extends CI_Model{
 		$this->db->update($this->table, $data);
 		return true;
 	}
+
 }
